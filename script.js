@@ -65,21 +65,49 @@ console.log(peopleArray);
 // Part 4: Sorting and Manipulating Data
 console.log('Part 4: Sorting and Manipulating Data')
 
-const sortedArr = peopleArray.sort();
+// Sort array in place
+peopleArray.sort();
 
-sortedArr.pop();
-sortedArr.splice(1,0,{ id: "48", name: "Barry", occupation: "Runner", age: "25" });
-sortedArr.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" })
+peopleArray.pop();
+peopleArray.splice(1,0,{ id: "48", name: "Barry", occupation: "Runner", age: "25" });
+peopleArray.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" })
 
-console.log(sortedArr);
+console.log(peopleArray);
 
 // Calculate the average age of the group
-let numberOfPeople = sortedArr.length;
+let numberOfPeople = peopleArray.length;
 let totalAge = 0;
 
-for (let i=0 ; i < sortedArr.length; i++) {
-    let personObj = sortedArr[i];
+for (let i=0 ; i < peopleArray.length; i++) {
+    let personObj = peopleArray[i];
     totalAge += parseInt(personObj.age);
 }
 
 console.log(`The average age of the group is ${totalAge/numberOfPeople}`)
+
+
+// Part 5: Full Circle
+console.log('Part 5: Full Circle');
+
+//convert array of objects to multi-dimensional array, then covert to csv string 
+const csvArray = [];
+const csvConvertedStr = '';
+
+// find the headers from the 1st object, add to array
+let csvHeaders = Object.keys(peopleArray[0]);
+csvArray.push(csvHeaders);
+console.log(csvArray);
+
+// get the rest of the data from object value, store in an array, then add to csvArray
+for (let person in peopleArray) {
+    let personObj = peopleArray[person];
+    let personArr = [];
+
+    for (const key in personObj) {
+        personArr.push(personObj[key]);
+    }
+    
+    csvArray.push (personArr);
+}
+
+console.log(csvArray);
