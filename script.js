@@ -108,7 +108,7 @@ for (let person in peopleArray) {
     csvArray.push (personArr);
 }
 
-// convert csvArray to csv string using nested loop: not perfect, put an extra comma at end of row
+// CONVERT OPTION 1. csvArray to csv string using nested loop: not perfect, put an extra comma at end of row
 // let csvConvertedStr = '';
 
 // for (let i = 0; i<csvArray.length; i++) {
@@ -124,13 +124,26 @@ for (let person in peopleArray) {
 // console.log(csvConvertedStr);
 
 
-// CONVERT USING BUILT-IN METHOD
-let csvConvertedStr = '';
+// CONVERT OPTION 2. USING BUILT-IN METHOD AND FOR LOOP
+// let csvConvertedStr = '';
+
+// for (let i = 0; i<csvArray.length; i++) {
+//     let row = csvArray[i];
+//     csvConvertedStr += row.join(',');
+//     csvConvertedStr += '\n';
+// }
+
+// console.log(csvConvertedStr);
+
+
+// CONVERT OPTION 3. USING BUILT-IN METHODS
+// Join data (array elements) on each row, then join rows array to make csv converted string.
+let rowsArr = [];
 
 for (let i = 0; i<csvArray.length; i++) {
     let row = csvArray[i];
-    csvConvertedStr += row.join(',');
-    csvConvertedStr += '\n';
+    rowsArr.push(row.join(','));
 }
 
+let csvConvertedStr = rowsArr.join('\n');
 console.log(csvConvertedStr);
