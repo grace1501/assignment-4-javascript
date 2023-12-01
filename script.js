@@ -1,12 +1,14 @@
 // Part 1: Refactoring Old Code
 // Part 2: Expanding Functionality
 console.log('\nPart 1 and 2\n')
+
 // Refactoring code from previous assignment 308.3.1
 
 let csvData = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26';
 
 let resultArr = [];
 
+// OPTION 1. MANUALLY EXTRACT DATA
 //find the heading row
 let headerEndIndex = csvData.indexOf('\n');
 let headerRow = csvData.slice(0,headerEndIndex);
@@ -26,9 +28,20 @@ for (let i=0; i < dataRows.length ; i++) {
     let rowArr = row.split(',');
     resultArr.push(rowArr);
 }
-
+// CHECK THE RESULT
+console.log('Result Array option 1: ')
 console.log(resultArr);
 
+// // OPTION 2. USING BUILT-IN METHOD
+// let dataRowArr = csvData.split('\n');
+// for (let i=0; i<dataRowArr.length; i++) {
+//     let dataCell = dataRowArr[i].split(',');
+//     resultArr.push(dataCell);
+// }
+
+// console.log('Number of columns: ' + resultArr[0].length)
+// console.log('Result Array option 2: ')
+// console.log(resultArr);
 
 
 // Part 3: Transforming Data
