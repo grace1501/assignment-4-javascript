@@ -1,6 +1,6 @@
 // Part 1: Refactoring Old Code
 // Part 2: Expanding Functionality
-console.log('Part 1 and 2')
+console.log('\nPart 1 and 2\n')
 // Refactoring code from previous assignment 308.3.1
 
 let csvData = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26';
@@ -32,7 +32,7 @@ console.log(resultArr);
 
 
 // Part 3: Transforming Data
-console.log('Part 3: Transforming Data')
+console.log('\nPart 3: Transforming Data\n')
 
 const inputArr = [
     ["ID", "Name", "Occupation", "Age"], 
@@ -63,7 +63,7 @@ for (let i = 1; i < inputArr.length; i++) {
 console.log(peopleArray);
 
 // Part 4: Sorting and Manipulating Data
-console.log('Part 4: Sorting and Manipulating Data')
+console.log('\nPart 4: Sorting and Manipulating Data\n')
 
 // Sort array in place
 peopleArray.sort();
@@ -87,16 +87,14 @@ console.log(`The average age of the group is ${totalAge/numberOfPeople}`)
 
 
 // Part 5: Full Circle
-console.log('Part 5: Full Circle');
+console.log('\nPart 5: Full Circle\n');
 
 //convert array of objects to multi-dimensional array, then covert to csv string 
 const csvArray = [];
-const csvConvertedStr = '';
 
 // find the headers from the 1st object, add to array
 let csvHeaders = Object.keys(peopleArray[0]);
 csvArray.push(csvHeaders);
-console.log(csvArray);
 
 // get the rest of the data from object value, store in an array, then add to csvArray
 for (let person in peopleArray) {
@@ -106,8 +104,33 @@ for (let person in peopleArray) {
     for (const key in personObj) {
         personArr.push(personObj[key]);
     }
-    
+
     csvArray.push (personArr);
 }
 
-console.log(csvArray);
+// convert csvArray to csv string using nested loop: not perfect, put an extra comma at end of row
+// let csvConvertedStr = '';
+
+// for (let i = 0; i<csvArray.length; i++) {
+//     let row = csvArray[i];
+
+//     for (let k=0; k<row.length; k++) {
+//         csvConvertedStr += row[k]
+//         csvConvertedStr += ',';
+//     }
+//     csvConvertedStr += '\n';
+// }
+
+// console.log(csvConvertedStr);
+
+
+// CONVERT USING BUILT-IN METHOD
+let csvConvertedStr = '';
+
+for (let i = 0; i<csvArray.length; i++) {
+    let row = csvArray[i];
+    csvConvertedStr += row.join(',');
+    csvConvertedStr += '\n';
+}
+
+console.log(csvConvertedStr);
